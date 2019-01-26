@@ -9,4 +9,6 @@ public interface IGoodsService {
 
     //获取商品列表
     public List<Goods> getGoodsList();
+
+    void testTran() throws Exception;
 }

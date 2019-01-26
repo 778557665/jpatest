@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "wzj_order")
@@ -23,6 +24,8 @@ public class Goods implements Serializable{
     private String goodsImage;
 
     private String details;
+
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -70,5 +73,13 @@ public class Goods implements Serializable{
 
     public void setClassify(Integer classify) {
         this.classify = classify;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
