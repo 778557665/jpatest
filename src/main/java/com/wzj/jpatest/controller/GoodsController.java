@@ -3,6 +3,7 @@ package com.wzj.jpatest.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.wzj.jpatest.bean.Goods;
+import com.wzj.jpatest.rmi.RMITest;
 import com.wzj.jpatest.service.IGoodsService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
@@ -40,6 +41,7 @@ public class GoodsController {
 
     @Autowired
     private IGoodsService goodsService;
+
     //获取商品列表信息
     @RequestMapping("/list")
     public String getGoodsList() throws Exception {
@@ -47,7 +49,20 @@ public class GoodsController {
         return JSON.toJSONString(list);
 
     }
-    //获取单个商品信息
+
+    @RequestMapping("/server")
+    public String server() throws Exception {
+        RMITest rmiTest = new RMITest();
+        rmiTest.testServer();
+        return "ok";
+    }
+
+    @RequestMapping("/client")
+    public String client() throws Exception {
+        RMITest rmiTest = new RMITest();
+        rmiTest.testClient();
+        return "ok";
+    }
 
     @RequestMapping("/mqProducer")
     public String rocketMqProducer() throws MQClientException, UnsupportedEncodingException, RemotingException, InterruptedException, MQBrokerException {
